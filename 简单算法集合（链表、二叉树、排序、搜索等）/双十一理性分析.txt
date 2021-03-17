@@ -1,0 +1,46 @@
+参数拟合
+function E=fun(a,x,y)
+x=x(:); 
+y=y(:); 
+ Y=a(1)*exp(-exp(a(2)*exp(1)*(a(3)-x)/a(1)+1))+a(4); %模型
+%p=p0*exp(vmax*t)/(1-(p0/pmax)*(1-exp(vmax*t))); %Logistic模型
+% Y=0.73626*exp(a(1)*x)/(1-(0.73626/a(2))*(1-exp(a(1)*x)))
+E=y-Y; %M文件结束
+
+x=[1 2 3 4 5 6 7]
+y=[500 500 300 250 200 150 150]
+a0=[1 1 1 1]; 
+options=optimset('lsqnonlin'); 
+a=lsqnonlin(@fun,a0,[],[],options,x,y
+
+画图
+x=1:30
+subplot(2,2,1)
+a=[540 50 11 1500]
+y=-1*a(1)*exp(-1*exp(a(2)*exp(1)*(a(3)-x)/a(1)+1))+a(4)
+plot(x,y)
+hold on
+xlabel('时间（月）')
+ylabel('价格（元）')
+title('airpods贬值预测图')
+subplot(2,2,2)
+a1=[1000	70	6.3	4499]
+y1=-1*a1(1)*exp(-1*exp(a1(2)*exp(1)*(a1(3)-x)/a1(1)+1))+a1(4)
+plot(x,y1)
+xlabel('时间（月）')
+ylabel('价格（元）')
+title('iphone11贬值预测图')
+subplot(2,2,3)
+a2=[1000	60	8.45	2769]
+y2=-1*a2(1)*exp(-1*exp(a2(2)*exp(1)*(a2(3)-x)/a2(1)+1))+a2(4)
+plot(x,y2)
+xlabel('时间（月）')
+ylabel('价格（元）')
+title('ipad mini贬值预测图')
+subplot(2,2,4)
+a3=[300	10	6.4	968]
+y3=-1*a3(1)*exp(-1*exp(a3(2)*exp(1)*(a3(3)-x)/a3(1)+1))+a3(4)
+plot(x,y3)
+xlabel('时间（月）')
+ylabel('价格（元）')
+title('apple pencil贬值预测图')
